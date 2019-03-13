@@ -17,7 +17,6 @@ public class DFSFileExplorer implements IFileExplorer {
 
   @Override
   public void explore(File rootDirectory, IFileVisitor vistor) {
-
     vistor.visit(rootDirectory);
     File[] files = rootDirectory.listFiles();
     if(files != null) {
@@ -32,5 +31,4 @@ public class DFSFileExplorer implements IFileExplorer {
       }
     }
   }
-
 }
