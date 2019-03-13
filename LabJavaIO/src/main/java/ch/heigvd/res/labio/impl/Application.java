@@ -84,6 +84,8 @@ public class Application implements IApplication {
     QuoteClient client = new QuoteClient();
     for (int i = 0; i < numberOfQuotes; i++) {
       Quote quote = client.fetchQuote();
+      int number = 0;
+      storeQuote(quote, "quote-" + number + ".utf8");
       /* There is a missing piece here!
        * As you can see, this method handles the first part of the lab. It uses the web service
        * client to fetch quotes. We have removed a single line from this method. It is a call to
@@ -135,6 +137,7 @@ public class Application implements IApplication {
     explorer.explore(new File(WORKSPACE_DIRECTORY), new IFileVisitor() {
       @Override
       public void visit(File file) {
+
         /*
          * There is a missing piece here. Notice how we use an anonymous class here. We provide the implementation
          * of the the IFileVisitor interface inline. You just have to add the body of the visit method, which should
