@@ -44,8 +44,8 @@ public class Utils {
     } else if(tableString.size() == 1){
       tableString.add("");
     }
-    String[] test = tableString.toArray(new String[tableString.size()]);
-    return test;
+    String[] stringArray = tableString.toArray(new String[tableString.size()]);
+    return stringArray;
   }
 
 }

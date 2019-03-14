@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
@@ -85,7 +86,7 @@ public class Application implements IApplication {
     for (int i = 0; i < numberOfQuotes; i++) {
       Quote quote = client.fetchQuote();
       int number = 0;
-      storeQuote(quote, "quote-" + number + ".utf8");
+      storeQuote(quote, "quote-" + number++ + ".utf8");
       /* There is a missing piece here!
        * As you can see, this method handles the first part of the lab. It uses the web service
        * client to fetch quotes. We have removed a single line from this method. It is a call to
@@ -125,9 +126,16 @@ public class Application implements IApplication {
    * @throws IOException 
    */
   void storeQuote(Quote quote, String filename) throws IOException {
-    throw new UnsupportedOperationException("The student has not implemented this method yet.");
+
+    List<String> tags = quote.getTags();
+    String path = WORKSPACE_DIRECTORY + "/";
+
+    for (int i = 0; i < tags.size(); ++i) {
+      path += tags.get(i) + "/";
+    }
+
+    new File(path + filename).createNewFile();
   }
-  
   /**
    * This method uses a IFileExplorer to explore the file system and prints the name of each
    * encountered file and directory.
