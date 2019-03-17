@@ -29,12 +29,14 @@ public class Utils {
 
     for(int i = 0; i < lines.length(); ++i){
       tmp += lines.charAt(i);
+      // if there is a new line
       if(lines.charAt(i) == '\r' || lines.charAt(i) == '\n'){
-       if(i + 1 != lines.length() && lines.charAt(i + 1) == '\n'){
-         tmp += lines.charAt(++i);
-       }
-       tableString.add(tmp);
-       tmp = "";
+          // if the new line is in the end of string
+          if(i + 1 != lines.length() && lines.charAt(i + 1) == '\n'){
+              tmp += lines.charAt(++i);
+          }
+          tableString.add(tmp);
+          tmp = "";
       }
     }
 
@@ -44,7 +46,10 @@ public class Utils {
     } else if(tableString.size() == 1){
       tableString.add("");
     }
+
+    // used for the return
     String[] stringArray = tableString.toArray(new String[tableString.size()]);
+
     return stringArray;
   }
 
